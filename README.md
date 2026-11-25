@@ -75,6 +75,8 @@ uv run pytest -m "not requires_network and not requires_gpu and not requires_api
 
 ## 双语网站
 
+线上地址：**[https://0summy0.github.io/agent-from-zero/](https://0summy0.github.io/agent-from-zero/)**
+
 网站源码位于 `docs/`，使用 VitePress。GitHub Actions 会在推送到 `main` 时构建并部署到 GitHub Pages。
 
 本地预览（需要 Node.js 22+ 和 npm）：

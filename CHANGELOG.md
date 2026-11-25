@@ -11,7 +11,7 @@
 - 结构化输出、工具调用、ReAct、记忆、MCP、Agent Skills 的最小实现。
 - 评测、JSONL trace、安全扫描、成本与延迟模拟。
 - 多智能体、本地浏览器工具和实时语音事件流。
-- VitePress 双语网站配置与 GitHub Pages 工作流。
+- VitePress 双语网站配置、GitHub Pages 工作流与线上部署。
 - 依赖锁定、双语对等、quiz 契约、每日漂移和 notebook 执行 CI。
 
 ### Fixed
@@ -24,5 +24,4 @@
 ### Pending
 
 - 真人试读与阅读时长测量。
-- 首次 GitHub Actions 与 Pages 部署验证。
 - 可选的 tokenizer 坏缓存自愈与每日漂移 issue 去重。
