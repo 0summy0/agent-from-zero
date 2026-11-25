@@ -55,7 +55,6 @@ export default defineConfig({
   title: 'Agent From Zero',
   description: '双语零基础 AI Agent 课程：每章代码都由 CI 真实执行。',
   base: '/agent-from-zero/',
-  srcDir: 'docs',
   cleanUrls: true,
   lastUpdated: false,
   themeConfig: {
