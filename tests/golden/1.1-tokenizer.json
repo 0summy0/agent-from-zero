@@ -1,0 +1,20 @@
+{
+  "chapter": "string",
+  "model": "string",
+  "model_weights_downloaded": "boolean",
+  "chinese": {
+    "text": "string",
+    "characters": "integer",
+    "tokens": "list[string]",
+    "token_ids": "list[integer]",
+    "token_count": "integer"
+  },
+  "english": {
+    "text": "string",
+    "characters": "integer",
+    "tokens": "list[string]",
+    "token_ids": "list[integer]",
+    "token_count": "integer"
+  },
+  "token_count_difference": "integer"
+}

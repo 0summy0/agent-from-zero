@@ -1,0 +1,49 @@
+name: schedule-daily
+
+on:
+  schedule:
+    - cron: "17 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  HF_ENDPOINT: https://hf-mirror.com
+  HF_HOME: ${{ github.workspace }}/.cache/huggingface
+
+jobs:
+  dependency-drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/uv
+            ${{ github.workspace }}/.cache/huggingface
+          key: ${{ runner.os }}-daily-${{ hashFiles('uv.lock') }}
+          restore-keys: ${{ runner.os }}-daily-
+      - id: drift
+        continue-on-error: true
+        name: Test upgraded dependencies in temporary directory
+        run: |
+          workdir="$(mktemp -d)"
+          cp pyproject.toml uv.lock README.md .python-version "$workdir/"
+          cp -r chapters docs quizzes tests tools src "$workdir/"
+          cd "$workdir"
+          uv lock --upgrade
+          uv sync --frozen
+          uv run pytest
+      - name: Open issue on dependency drift
+        if: steps.drift.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --title "Daily dependency drift failed: ${{ github.run_id }}" \
+            --body "The temporary upgraded lockfile failed the smoke tests. See ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} for the logs. The repository lockfile was not changed."

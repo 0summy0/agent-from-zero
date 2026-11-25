@@ -1,0 +1,43 @@
+name: parity
+
+on:
+  push:
+    paths:
+      - pyproject.toml
+      - uv.lock
+      - chapters/**
+      - docs/**
+      - quizzes/**
+      - tests/**
+      - tools/**
+      - .python-version
+      - .github/workflows/**
+  pull_request:
+    paths:
+      - pyproject.toml
+      - uv.lock
+      - chapters/**
+      - docs/**
+      - quizzes/**
+      - tests/**
+      - tools/**
+      - .python-version
+      - .github/workflows/**
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/uv
+          key: ${{ runner.os }}-parity-${{ hashFiles('uv.lock') }}
+          restore-keys: ${{ runner.os }}-parity-
+      - run: uv sync --frozen
+      - run: uv run python tools/check_parity.py
+      - run: uv run python tools/check_quiz.py

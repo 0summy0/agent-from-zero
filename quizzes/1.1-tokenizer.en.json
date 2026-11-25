@@ -1,0 +1,44 @@
+[
+  {
+    "chapter": "1.1-tokenizer",
+    "id": "1.1-tokenizer-q1",
+    "question": "What does a tokenizer mainly do before a model reads text?",
+    "options": [
+      "Split text into tokens",
+      "Turn images into sound",
+      "Compile functions into models",
+      "Replace networks with disks"
+    ],
+    "answer": 0,
+    "explanation": "A tokenizer converts input text into a token sequence. The model processes the IDs assigned to those tokens rather than directly reading raw characters.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "1.1-tokenizer",
+    "id": "1.1-tokenizer-q2",
+    "question": "What is the most direct effect when the same Chinese text is split into smaller pieces?",
+    "options": [
+      "It guarantees correct answers",
+      "It permanently shrinks the model",
+      "It consumes more context space",
+      "It removes the need for tests"
+    ],
+    "answer": 2,
+    "explanation": "More tokens generally occupy more positions in the context window and can increase processing cost. A higher token count does not guarantee a better answer.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "1.1-tokenizer",
+    "id": "1.1-tokenizer-q3",
+    "question": "Which statement about token counts is correct?",
+    "options": [
+      "A token is always one Chinese character",
+      "A token is not always a character or word",
+      "More tokens always mean better answers",
+      "Every model splits text in exactly the same way"
+    ],
+    "answer": 1,
+    "explanation": "A token is a text unit learned by a tokenizer. It can be a character, part of a word, or a common sequence, and different models can split the same text differently.",
+    "difficulty": "beginner"
+  }
+]

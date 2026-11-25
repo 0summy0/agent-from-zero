@@ -1,0 +1,48 @@
+name: smoke-linux
+
+on:
+  push:
+    paths:
+      - pyproject.toml
+      - uv.lock
+      - chapters/**
+      - docs/**
+      - quizzes/**
+      - tests/**
+      - tools/**
+      - .python-version
+      - .github/workflows/**
+  pull_request:
+    paths:
+      - pyproject.toml
+      - uv.lock
+      - chapters/**
+      - docs/**
+      - quizzes/**
+      - tests/**
+      - tools/**
+      - .python-version
+      - .github/workflows/**
+  workflow_dispatch:
+
+env:
+  HF_ENDPOINT: https://hf-mirror.com
+  HF_HOME: ${{ github.workspace }}/.cache/huggingface
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/uv
+            ${{ github.workspace }}/.cache/huggingface
+          key: ${{ runner.os }}-smoke-${{ hashFiles('uv.lock') }}
+          restore-keys: ${{ runner.os }}-smoke-
+      - run: uv sync --frozen
+      - run: uv run pytest

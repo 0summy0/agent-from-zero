@@ -1,0 +1,61 @@
+name: matrix
+
+on:
+  push:
+    paths:
+      - pyproject.toml
+      - uv.lock
+      - chapters/**
+      - docs/**
+      - quizzes/**
+      - tests/**
+      - tools/**
+      - .python-version
+      - .github/workflows/**
+  pull_request:
+    paths:
+      - pyproject.toml
+      - uv.lock
+      - chapters/**
+      - docs/**
+      - quizzes/**
+      - tests/**
+      - tools/**
+      - .python-version
+      - .github/workflows/**
+  workflow_dispatch:
+
+env:
+  HF_ENDPOINT: https://hf-mirror.com
+  HF_HOME: ${{ github.workspace }}/.cache/huggingface
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        channel: [locked, latest-stable]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/uv
+            ${{ github.workspace }}/.cache/huggingface
+          key: ${{ runner.os }}-${{ matrix.channel }}-${{ hashFiles('uv.lock') }}
+          restore-keys: ${{ runner.os }}-${{ matrix.channel }}-
+      - name: Test dependency channel
+        run: |
+          if [ "${{ matrix.channel }}" = "latest-stable" ]; then
+            workdir="$(mktemp -d)"
+            cp pyproject.toml uv.lock README.md .python-version "$workdir/"
+            cp -r chapters docs quizzes tests tools src "$workdir/"
+            cd "$workdir"
+            uv lock --upgrade
+          fi
+          uv sync --frozen
+          uv run pytest

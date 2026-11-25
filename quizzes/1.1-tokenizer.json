@@ -1,0 +1,44 @@
+[
+  {
+    "chapter": "1.1-tokenizer",
+    "id": "1.1-tokenizer-q1",
+    "question": "Tokenizer 在模型读取文本前主要做什么？",
+    "options": [
+      "把文本切成 token",
+      "把图片转成声音",
+      "把函数编译成模型",
+      "把网络替换成磁盘"
+    ],
+    "answer": 0,
+    "explanation": "Tokenizer 把输入文本转换为 token 序列，模型随后处理的是这些 token 对应的编号，而不是直接理解原始字符。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "1.1-tokenizer",
+    "id": "1.1-tokenizer-q2",
+    "question": "同样的一段中文被切得更碎，最直接的影响是什么？",
+    "options": [
+      "自动提高回答正确率",
+      "永久减少模型参数量",
+      "占用更多上下文长度",
+      "让所有函数无需测试"
+    ],
+    "answer": 2,
+    "explanation": "文本被切成的 token 越多，占用的上下文位置通常越多，也可能增加处理成本；切分数量本身不能保证答案质量。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "1.1-tokenizer",
+    "id": "1.1-tokenizer-q3",
+    "question": "观察 token 数量时，哪种说法正确？",
+    "options": [
+      "一个 token 永远是一个汉字",
+      "token 不一定等于汉字或单词",
+      "token 越多回答必然越正确",
+      "所有模型共享完全相同的切分"
+    ],
+    "answer": 1,
+    "explanation": "Token 是 tokenizer 学到的文本单位，可能是字符、词的一部分或常见词组；不同模型采用的词表和切分结果可以不同。",
+    "difficulty": "beginner"
+  }
+]
