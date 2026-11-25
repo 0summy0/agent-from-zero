@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "1.4-hallucination",
+    "id": "1.4-hallucination-q1",
+    "question": "为什么语言模型会产生幻觉？",
+    "options": ["模型生成合理文本", "模型故意欺骗", "检索必然失败", "硬件发生故障"],
+    "answer": 0,
+    "explanation": "幻觉通常不是故意说谎，而是模型生成了看似合理但缺乏事实依据的文本。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "1.4-hallucination",
+    "id": "1.4-hallucination-q2",
+    "question": "没有检索到支持证据时，最小机制应该怎么做？",
+    "options": ["明确弃权并说明", "补全最可能答案", "引用无关的段落", "提高采样温度"],
+    "answer": 0,
+    "explanation": "缺少支持证据时应明确表示不知道或需要更多信息，而不是生成没有依据的答案。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "1.4-hallucination",
+    "id": "1.4-hallucination-q3",
+    "question": "以下哪组是缓解幻觉的工程手段？",
+    "options": ["检索、引用与弃权", "删除全部训练数据", "只增大上下文窗口", "禁止所有文本生成"],
+    "answer": 0,
+    "explanation": "检索证据、引用来源和允许弃权可以降低无依据回答的风险，但不能彻底消除幻觉。",
+    "difficulty": "beginner"
+  }
+]

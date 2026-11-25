@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "3.4-cost-latency",
+    "id": "3.4-cost-latency-q1",
+    "question": "What is the main purpose of normalizing a prompt for TokenCache?",
+    "options": ["Merge whitespace variants", "Store data permanently", "Improve model accuracy", "Bypass tool permissions"],
+    "answer": 0,
+    "explanation": "Collapsing repeated whitespace lets requests that differ only in whitespace share a cache key while preserving case and punctuation.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "3.4-cost-latency",
+    "id": "3.4-cost-latency-q2",
+    "question": "Which model handles a small question by default in this chapter?",
+    "options": ["cheap_model", "strong_model", "both models", "any model"],
+    "answer": 0,
+    "explanation": "A short question below the token threshold without a complexity marker is routed to cheap_model.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "3.4-cost-latency",
+    "id": "3.4-cost-latency-q3",
+    "question": "Why do simulated cost and latency fall on a cache hit?",
+    "options": ["Generation is skipped", "Input is always shorter", "The model has more weights", "Prices change randomly"],
+    "answer": 0,
+    "explanation": "A cache hit reuses the response; this chapter sets simulated generation cost to zero and keeps only a small retrieval latency.",
+    "difficulty": "beginner"
+  }
+]

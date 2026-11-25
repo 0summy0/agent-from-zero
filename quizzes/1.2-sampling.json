@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "1.2-sampling",
+    "id": "1.2-sampling-q1",
+    "question": "降低温度通常会让下一个 token 的概率分布怎样变化？",
+    "options": ["分布更集中", "分布更平坦", "一定删除低频词", "直接改变词表"],
+    "answer": 0,
+    "explanation": "温度越低，高概率 token 与低概率 token 的差距越被放大，分布通常更集中。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "1.2-sampling",
+    "id": "1.2-sampling-q2",
+    "question": "top-p 采样的主要作用是什么？",
+    "options": ["截取高概率候选", "统一所有概率", "删除重复文本", "扩大模型词表"],
+    "answer": 0,
+    "explanation": "top-p 只保留累计概率达到阈值所需的最小候选集合，再从中抽样。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "1.2-sampling",
+    "id": "1.2-sampling-q3",
+    "question": "给随机抽样设置固定 seed 的主要好处是什么？",
+    "options": ["让抽样可复现", "提高模型精度", "减少上下文长度", "跳过温度处理"],
+    "answer": 0,
+    "explanation": "固定 seed 让同一段代码每次得到相同的抽样结果，便于教学、调试和测试。",
+    "difficulty": "beginner"
+  }
+]

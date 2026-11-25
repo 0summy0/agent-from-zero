@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "3.3-security",
+    "id": "3.3-security-q1",
+    "question": "Why is rule scanning not a complete security solution?",
+    "options": ["Only known patterns", "Every possible attack", "All permission checks", "Any tool execution"],
+    "answer": 0,
+    "explanation": "Rules depend on known or similar patterns, so they can miss new attacks and create false positives; they cannot replace other security layers.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "3.3-security",
+    "id": "3.3-security-q2",
+    "question": "How should a tool whitelist handle a tool that is not listed?",
+    "options": ["Deny the call", "Allow by default", "Elevate access", "Ignore the risk"],
+    "answer": 0,
+    "explanation": "Default denial ensures that tools without explicit permission cannot execute, which follows least privilege.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "3.3-security",
+    "id": "3.3-security-q3",
+    "question": "What should a high-risk tool call require besides a permission check?",
+    "options": ["Require human review", "Allow it automatically", "Hide audit logs", "Broaden its scope"],
+    "answer": 0,
+    "explanation": "Human review checks the exact arguments and impact, providing an important safeguard for deletion, messaging, and modification actions.",
+    "difficulty": "beginner"
+  }
+]

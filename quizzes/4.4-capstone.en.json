@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "4.4-capstone",
+    "id": "4.4-capstone-q1",
+    "question": "What should Local Research Desk do when it finds no supporting evidence?",
+    "options": ["Invent a plausible fact", "Abstain explicitly", "Search the network", "Call a paid API"],
+    "answer": 1,
+    "explanation": "The evidence gate requires abstention without local support instead of inventing a plausible-sounding fact.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "4.4-capstone",
+    "id": "4.4-capstone-q2",
+    "question": "What is the main purpose of limiting the ReAct loop to four steps?",
+    "options": ["Bound steps and tool calls", "Expand the knowledge base", "Guarantee error-free answers", "Connect to the internet"],
+    "answer": 0,
+    "explanation": "The four-step limit is a hard safety boundary on planning and tool execution; it adds no knowledge or correctness guarantee.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "4.4-capstone",
+    "id": "4.4-capstone-q3",
+    "question": "Why does the capstone calculator reject function calls?",
+    "options": ["Interpret an AST allowlist", "Execute arbitrary code", "Pass text to a shell", "Guess with a regex"],
+    "answer": 0,
+    "explanation": "The calculator interprets only permitted numeric and arithmetic nodes, never functions, names, attributes, or arbitrary Python code.",
+    "difficulty": "beginner"
+  }
+]

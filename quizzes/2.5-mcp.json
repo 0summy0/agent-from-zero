@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "2.5-mcp",
+    "id": "2.5-mcp-q1",
+    "question": "本章客户端与服务器之间使用什么传输方式？",
+    "options": ["标准输入输出", "HTTP 接口", "GPU 显存", "远程数据库"],
+    "answer": 0,
+    "explanation": "客户端启动服务器子进程，通过 stdin 和 stdout 交换逐行 JSON 消息。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.5-mcp",
+    "id": "2.5-mcp-q2",
+    "question": "调用 add 前，用哪个方法发现可用工具？",
+    "options": ["初始化", "列出工具", "调用工具", "未知方法"],
+    "answer": 1,
+    "explanation": "tools/list 返回工具名称、描述和输入 schema，客户端据此构造调用。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.5-mcp",
+    "id": "2.5-mcp-q3",
+    "question": "服务器收到未知 JSON-RPC 方法时应返回什么？",
+    "options": ["-32601", "-32602", "-32700", "-32000"],
+    "answer": 0,
+    "explanation": "-32601 表示 Method not found；-32602 表示参数无效，-32700 表示 JSON 解析失败。",
+    "difficulty": "beginner"
+  }
+]

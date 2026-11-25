@@ -1,0 +1,44 @@
+[
+  {
+    "chapter": "4.1-multi-agent",
+    "id": "4.1-multi-agent-q1",
+    "question": "When is a multi-agent system appropriate?",
+    "options": [
+      "Split every task into agents",
+      "Roles need separation and review",
+      "More agents always improve results",
+      "Only to increase the prompt count"
+    ],
+    "answer": 1,
+    "explanation": "Multi-agent collaboration may beat one Agent when role boundaries are clear and independent review has value; the number of roles alone does not guarantee quality.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "4.1-multi-agent",
+    "id": "4.1-multi-agent-q2",
+    "question": "Which stop conditions must an orchestrator define?",
+    "options": [
+      "Wait for agents to stop themselves",
+      "Let agents review forever",
+      "Stop on quality or round limit",
+      "Restart after every revision"
+    ],
+    "answer": 2,
+    "explanation": "An orchestrator needs both acceptance criteria and resource limits; this chapter stops when all points pass or two checks are complete.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "4.1-multi-agent",
+    "id": "4.1-multi-agent-q3",
+    "question": "What is a main cost of adding a Critic?",
+    "options": [
+      "More latency and cost; errors may spread",
+      "User input is deleted automatically",
+      "Outputs no longer need validation",
+      "Model weights are changed permanently"
+    ],
+    "answer": 0,
+    "explanation": "An extra review usually adds waiting and call costs, and earlier roles can pass mistakes to Critic, so independent review still needs validation.",
+    "difficulty": "beginner"
+  }
+]

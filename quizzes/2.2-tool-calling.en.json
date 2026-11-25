@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "2.2-tool-calling",
+    "id": "2.2-tool-calling-q1",
+    "question": "What is the main purpose of an allowlist in tool calling?",
+    "options": ["Make plans prettier", "Limit executable tools", "Raise model confidence", "Stringify every argument"],
+    "answer": 1,
+    "explanation": "An allowlist limits which tools may execute, so a structurally valid plan is still rejected when its tool is absent from the list.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.2-tool-calling",
+    "id": "2.2-tool-calling-q2",
+    "question": "How does the calculator in this chapter process an expression?",
+    "options": ["Pass it to eval", "Parse allowed operators", "Send it to a remote API", "Ignore every error"],
+    "answer": 1,
+    "explanation": "The calculator uses an AST to parse numbers and allowed arithmetic operators instead of executing arbitrary Python code.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.2-tool-calling",
+    "id": "2.2-tool-calling-q3",
+    "question": "What happens when calculator receives an extra argument?",
+    "options": ["Ignore it silently", "Supply a default", "Reject the call", "Switch to another tool"],
+    "answer": 2,
+    "explanation": "Parameter validation requires exactly the expected fields, so an extra argument makes the call raise ValueError.",
+    "difficulty": "beginner"
+  }
+]

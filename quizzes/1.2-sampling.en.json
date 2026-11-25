@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "1.2-sampling",
+    "id": "1.2-sampling-q1",
+    "question": "What usually happens to the next-token distribution when temperature is lowered?",
+    "options": ["It becomes sharper", "It becomes flatter", "It deletes rare words", "It changes the vocabulary"],
+    "answer": 0,
+    "explanation": "A lower temperature increases the gap between high-probability and low-probability tokens, usually making the distribution sharper.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "1.2-sampling",
+    "id": "1.2-sampling-q2",
+    "question": "What is the main purpose of top-p sampling?",
+    "options": ["Keep likely candidates", "Flatten all probabilities", "Remove repeated text", "Expand the vocabulary"],
+    "answer": 0,
+    "explanation": "Top-p keeps the smallest set of candidates whose cumulative probability reaches the threshold, then samples from that set.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "1.2-sampling",
+    "id": "1.2-sampling-q3",
+    "question": "What is the main benefit of using a fixed random seed?",
+    "options": ["Reproducible samples", "Higher model accuracy", "Shorter context windows", "Skipping temperature"],
+    "answer": 0,
+    "explanation": "A fixed seed makes repeated runs choose the same token, which helps with teaching, debugging, and tests.",
+    "difficulty": "beginner"
+  }
+]

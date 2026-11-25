@@ -1,2 +1,3 @@
-def main() -> None:
-    print("Hello from agent-from-zero!")
+from .capstone import main, run
+
+__all__ = ["main", "run"]

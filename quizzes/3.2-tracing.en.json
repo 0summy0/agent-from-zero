@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "3.2-tracing",
+    "id": "3.2-tracing-q1",
+    "question": "What relationship does parent_span_id mainly express in a trace?",
+    "options": ["Parent-child spans", "User login passwords", "File write permissions", "Model training epochs"],
+    "answer": 0,
+    "explanation": "parent_span_id points to a parent span, organizing planning and tool calls into a causal tree.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "3.2-tracing",
+    "id": "3.2-tracing-q2",
+    "question": "Why is JSONL useful for storing span records?",
+    "options": ["Each line parses alone", "It must contain images", "It automatically hides errors", "It cannot be appended"],
+    "answer": 0,
+    "explanation": "Each line is a complete JSON object, supporting line-by-line parsing, streaming reads, and appends.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "3.2-tracing",
+    "id": "3.2-tracing-q3",
+    "question": "What is most valuable in an exception span when a tool call fails?",
+    "options": ["Failure layer and cause", "Screen resolution", "Disk partition table", "Random access count"],
+    "answer": 0,
+    "explanation": "The status and error attributes identify the failing layer and its cause, narrowing the debugging search.",
+    "difficulty": "beginner"
+  }
+]

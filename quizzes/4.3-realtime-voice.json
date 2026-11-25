@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "4.3-realtime-voice",
+    "id": "4.3-realtime-voice-q1",
+    "question": "为什么实时语音不只是普通 chat 加 TTS？",
+    "options": ["流式状态与打断", "只增加语音播放", "把聊天记录变音频", "用 GPU 合成波形"],
+    "answer": 0,
+    "explanation": "实时语音需要持续处理流式转写、轮次状态和打断，并在生成与播放之间协调取消。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "4.3-realtime-voice",
+    "id": "4.3-realtime-voice-q2",
+    "question": "transcript.partial 事件的作用是什么？",
+    "options": ["立即生成回答", "更新当前转写", "发送语音波形", "清空会话状态"],
+    "answer": 1,
+    "explanation": "partial 只更新当前转写；final 才提交转写并排队回答。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "4.3-realtime-voice",
+    "id": "4.3-realtime-voice-q3",
+    "question": "response.cancel 可以丢弃什么？",
+    "options": ["丢弃未发回答", "撤回已发回答", "删除最终转写", "触发新回答"],
+    "answer": 0,
+    "explanation": "取消只作用于待发回答；已经发出的回答无法通过该事件撤回。",
+    "difficulty": "beginner"
+  }
+]

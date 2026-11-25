@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "4.2-browser-use",
+    "id": "4.2-browser-use-q1",
+    "question": "浏览智能体正确的一次行动循环是什么？",
+    "options": ["观察、决定、行动", "行动后忘记观察", "只决定不观察", "连续盲目点击"],
+    "answer": 0,
+    "explanation": "先读取页面结构，再选择动作；行动后还要重新观察，直到目标达成或循环停止。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "4.2-browser-use",
+    "id": "4.2-browser-use-q2",
+    "question": "本章点击文档链接时采用哪种更稳定的定位方式？",
+    "options": ["完整可见链接文本", "自动生成的CSS路径", "第三个元素的坐标", "猜测文档页地址"],
+    "answer": 0,
+    "explanation": "完整可见链接文本比易变的生成属性、元素序号和坐标更稳定，但仍需拒绝歧义。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "4.2-browser-use",
+    "id": "4.2-browser-use-q3",
+    "question": "真实浏览智能体准备发送消息前应怎么做？",
+    "options": ["直接提交并继续", "先取得用户明确确认", "仅扩大链接文本匹配", "把凭据写入页面"],
+    "answer": 1,
+    "explanation": "发送消息会改变外部状态，应先确认操作与参数，并遵守域名和动作权限边界。",
+    "difficulty": "beginner"
+  }
+]

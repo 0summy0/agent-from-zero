@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "3.1-evaluation",
+    "id": "3.1-evaluation-q1",
+    "question": "What rule lets exact_match accept PARIS when the expected answer is Paris?",
+    "options": ["Case normalization", "Ignoring every error", "Automatic web search", "Expanding the dataset"],
+    "answer": 0,
+    "explanation": "normalize_text folds case and collapses whitespace, making both normalized answers equal.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "3.1-evaluation",
+    "id": "3.1-evaluation-q2",
+    "question": "Why should evaluating an empty dataset raise an error?",
+    "options": ["Pass rate is meaningless", "Files cannot be written", "Lists cannot be created", "Questions must be hard"],
+    "answer": 0,
+    "explanation": "An empty set has no answers to score, so a pass rate would hide a configuration problem.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "3.1-evaluation",
+    "id": "3.1-evaluation-q3",
+    "question": "Which measures supplement accuracy when deciding whether an Agent is ready?",
+    "options": ["Success rate and cost", "Colors and font sizes", "File names and paths", "Only the answer count"],
+    "answer": 0,
+    "explanation": "Task success, evidence citation, latency, and cost complement accuracy with effectiveness and resource use.",
+    "difficulty": "beginner"
+  }
+]

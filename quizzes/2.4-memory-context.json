@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "2.4-memory-context",
+    "id": "2.4-memory-context-q1",
+    "question": "消息滑出最近窗口后，本章把它保存在哪里？",
+    "options": ["旧消息摘要", "系统提示", "工具参数", "模型权重"],
+    "answer": 0,
+    "explanation": "滑出窗口的旧消息会进入摘要，以便为后续上下文提供粗略背景。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.4-memory-context",
+    "id": "2.4-memory-context-q2",
+    "question": "本章用什么近似 token 预算？",
+    "options": ["图像像素", "字符数量", "音频秒数", "文件权限"],
+    "answer": 1,
+    "explanation": "本章用字符数近似 token 预算，并以 4 个字符约等于 1 个 token 来估算。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.4-memory-context",
+    "id": "2.4-memory-context-q3",
+    "question": "摘要为什么可能丢失信息？",
+    "options": ["必须压缩细节", "工具一定联网", "窗口永不滑动", "字符没有长度"],
+    "answer": 0,
+    "explanation": "摘要需要压缩旧内容，本章会截断过长消息，真实摘要也可能合并或改写细节。",
+    "difficulty": "beginner"
+  }
+]

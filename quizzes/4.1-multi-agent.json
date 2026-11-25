@@ -1,0 +1,44 @@
+[
+  {
+    "chapter": "4.1-multi-agent",
+    "id": "4.1-multi-agent-q1",
+    "question": "什么情况下适合使用多个智能体？",
+    "options": [
+      "所有任务都该拆分",
+      "需要角色分工与独立检查",
+      "角色越多效果必然越好",
+      "只为增加提示词数量"
+    ],
+    "answer": 1,
+    "explanation": "当角色边界清晰且独立检查有明确价值时，多智能体协作才可能优于单智能体；角色数量本身不是质量保证。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "4.1-multi-agent",
+    "id": "4.1-multi-agent-q2",
+    "question": "本章的编排器必须定义哪类停止条件？",
+    "options": [
+      "只等模型主动结束",
+      "让角色无限互相评审",
+      "质量达标或轮数达上限",
+      "每次修订后立即重启"
+    ],
+    "answer": 2,
+    "explanation": "编排器必须同时定义验收条件和资源上限；本章在要点齐全或两轮检查结束时停止。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "4.1-multi-agent",
+    "id": "4.1-multi-agent-q3",
+    "question": "增加一个 Critic 的主要代价是什么？",
+    "options": [
+      "延迟与成本增加，错误可能传播",
+      "用户输入会被自动删除",
+      "所有结果都无需再验证",
+      "模型参数会被永久修改"
+    ],
+    "answer": 0,
+    "explanation": "额外检查通常增加等待和调用成本，前序角色的错误也可能传入 Critic，因此独立检查仍需要验证。",
+    "difficulty": "beginner"
+  }
+]

@@ -1,10 +1,11 @@
 [project]
 name = "agent-from-zero"
-version = "0.1.0"
+version = "1.0.0"
 description = "Bilingual zero-GPU AI Agent course with executable chapters"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "jsonschema>=4.23,<5",
     "tokenizers>=0.21.0,<0.23",
 ]
 

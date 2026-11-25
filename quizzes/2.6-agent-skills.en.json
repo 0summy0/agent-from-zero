@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "2.6-agent-skills",
+    "id": "2.6-agent-skills-q1",
+    "question": "Which path pattern identifies skill files?",
+    "options": ["skills/*/SKILL.md", "skills/*.md", "Root SKILL.md", "Docs skill files"],
+    "answer": 0,
+    "explanation": "SkillLibrary discovers one SKILL.md in each direct child directory under skills.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.6-agent-skills",
+    "id": "2.6-agent-skills-q2",
+    "question": "Why list skills before loading on demand?",
+    "options": ["Smaller prompts", "Higher accuracy", "Run skill files", "Skip metadata"],
+    "answer": 0,
+    "explanation": "Names and descriptions guide selection, and only the chosen body enters context.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.6-agent-skills",
+    "id": "2.6-agent-skills-q3",
+    "question": "What should render_skill_prompt receive?",
+    "options": ["One loaded skill", "All skill folders", "A skill file path", "The user question"],
+    "answer": 0,
+    "explanation": "It accepts an already-loaded skill dictionary and renders only that description and body.",
+    "difficulty": "beginner"
+  }
+]

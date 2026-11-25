@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "3.1-evaluation",
+    "id": "3.1-evaluation-q1",
+    "question": "exact_match 接受 PARIS 而期望答案为 Paris，主要体现了什么规则？",
+    "options": ["大小写归一化", "忽略所有错误", "自动联网查询", "扩大评测集合"],
+    "answer": 0,
+    "explanation": "normalize_text 会折叠大小写并合并空白，因此归一化后的两个答案相同。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "3.1-evaluation",
+    "id": "3.1-evaluation-q2",
+    "question": "为什么评测集为空时应该报错？",
+    "options": ["通过率无意义", "无法写入文件", "不能创建列表", "题目必须很难"],
+    "answer": 0,
+    "explanation": "空集合没有可评分的回答，此时计算通过率会掩盖评测配置问题。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "3.1-evaluation",
+    "id": "3.1-evaluation-q3",
+    "question": "哪组指标能补充准确率，帮助判断 Agent 是否可上线？",
+    "options": ["成功率与成本", "颜色与字号", "文件名与路径", "只看出答案数"],
+    "answer": 0,
+    "explanation": "任务成功率、证据引用、延迟和成本从效果、可信度与资源消耗补充准确率。",
+    "difficulty": "beginner"
+  }
+]

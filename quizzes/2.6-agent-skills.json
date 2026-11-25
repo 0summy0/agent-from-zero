@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "2.6-agent-skills",
+    "id": "2.6-agent-skills-q1",
+    "question": "技能文件采用什么路径约定？",
+    "options": ["skills/*/SKILL.md", "skills/*.md", "根目录 SKILL.md", "docs/*.txt"],
+    "answer": 0,
+    "explanation": "SkillLibrary 只发现 skills 下每个直接子目录中的 SKILL.md。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.6-agent-skills",
+    "id": "2.6-agent-skills-q2",
+    "question": "为什么先列出技能再按需加载？",
+    "options": ["减少提示词长度", "提高模型准确率", "自动执行技能文件", "跳过元数据解析"],
+    "answer": 0,
+    "explanation": "先查看名称和描述，只加载选中技能的正文，可以减少无关上下文。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.6-agent-skills",
+    "id": "2.6-agent-skills-q3",
+    "question": "render_skill_prompt 应接收什么？",
+    "options": ["一个已加载技能", "全部技能目录", "技能文件路径", "用户原始问题"],
+    "answer": 0,
+    "explanation": "它接收已经加载的技能字典，只渲染该技能的描述和指令。",
+    "difficulty": "beginner"
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "3.3-security",
+    "id": "3.3-security-q1",
+    "question": "为什么规则扫描不是完整安全方案？",
+    "options": ["只能识别已知模式", "可阻止所有攻击", "能替代权限控制", "可执行任意工具"],
+    "answer": 0,
+    "explanation": "规则依赖已知或相似模式，可能漏掉新型攻击，也可能误报，因此不能替代其他安全层。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "3.3-security",
+    "id": "3.3-security-q2",
+    "question": "工具白名单默认应如何处理未列出工具？",
+    "options": ["拒绝该调用", "默认放行", "提升权限", "忽略风险"],
+    "answer": 0,
+    "explanation": "默认拒绝确保未明确授权的工具不能执行，这符合权限最小化原则。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "3.3-security",
+    "id": "3.3-security-q3",
+    "question": "高风险工具调用除权限检查外还应做什么？",
+    "options": ["要求人工确认", "自动放行", "隐藏日志", "扩大范围"],
+    "answer": 0,
+    "explanation": "人工确认可以检查具体参数和影响，是删除、发送、修改等高风险操作的重要防线。",
+    "difficulty": "beginner"
+  }
+]

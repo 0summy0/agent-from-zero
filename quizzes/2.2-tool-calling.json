@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "2.2-tool-calling",
+    "id": "2.2-tool-calling-q1",
+    "question": "工具调用中的白名单主要用于什么？",
+    "options": ["让计划更美观", "限制可执行工具", "增加模型信心", "把所有参数转成文本"],
+    "answer": 1,
+    "explanation": "白名单限定本次允许执行的工具，即使计划结构合法，不在名单中的工具也会被拒绝。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.2-tool-calling",
+    "id": "2.2-tool-calling-q2",
+    "question": "本章计算器处理表达式时采用什么方式？",
+    "options": ["直接用 eval", "解析白名单运算符", "发给远程 API", "忽略所有错误"],
+    "answer": 1,
+    "explanation": "计算器使用 AST 解析数字和白名单算术运算符，避免直接执行任意 Python 代码。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.2-tool-calling",
+    "id": "2.2-tool-calling-q3",
+    "question": "如果 calculator 收到多余参数，调用会怎样？",
+    "options": ["静默忽略", "补一个默认值", "拒绝这次调用", "改成另一个工具"],
+    "answer": 2,
+    "explanation": "参数检查要求字段齐全且没有多余字段，因此多余参数会使本次调用抛出 ValueError。",
+    "difficulty": "beginner"
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "2.3-react-loop",
+    "id": "2.3-react-loop-q1",
+    "question": "Which ReAct step contains the result returned by a tool?",
+    "options": ["Thought", "Action", "Observe", "Finish"],
+    "answer": 2,
+    "explanation": "Observation is the result returned after a tool runs, and the planner uses it to choose the next step.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.3-react-loop",
+    "id": "2.3-react-loop-q2",
+    "question": "What is the main purpose of setting max_steps?",
+    "options": ["Limit the steps", "Expand the tools", "Guarantee accuracy", "Add model parameters"],
+    "answer": 0,
+    "explanation": "max_steps sets a hard loop limit so tool failures or repeated planner actions cannot run forever.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.3-react-loop",
+    "id": "2.3-react-loop-q3",
+    "question": "What does this chapter's deterministic planner use to choose actions?",
+    "options": ["Fixed local rules", "Remote API", "Random guesses", "GPU models"],
+    "answer": 0,
+    "explanation": "The chapter uses fixed rules to recognize requests and inspect earlier observations, so it needs no model and is reproducible.",
+    "difficulty": "beginner"
+  }
+]

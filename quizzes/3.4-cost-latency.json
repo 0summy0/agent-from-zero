@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "3.4-cost-latency",
+    "id": "3.4-cost-latency-q1",
+    "question": "TokenCache 规范化 prompt 的主要作用是什么？",
+    "options": ["合并空白变体", "永久保存数据", "提高模型精度", "绕过工具权限"],
+    "answer": 0,
+    "explanation": "合并连续空白后，仅有空白差异的请求可以共用缓存键，同时保留大小写和标点。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "3.4-cost-latency",
+    "id": "3.4-cost-latency-q2",
+    "question": "本章小问题默认路由到哪个模型？",
+    "options": ["廉价模型", "强力模型", "两个模型", "任意模型"],
+    "answer": 0,
+    "explanation": "未超过 token 阈值且没有复杂度标记的短问题会路由到 cheap_model。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "3.4-cost-latency",
+    "id": "3.4-cost-latency-q3",
+    "question": "为什么缓存命中的模拟成本和延迟会下降？",
+    "options": ["无需再次生成", "输入一定更短", "模型参数更多", "价格随机变化"],
+    "answer": 0,
+    "explanation": "缓存命中直接复用响应，本章将模拟生成成本设为零，并只保留很小的读取延迟。",
+    "difficulty": "beginner"
+  }
+]

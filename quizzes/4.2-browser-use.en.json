@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "4.2-browser-use",
+    "id": "4.2-browser-use-q1",
+    "question": "What is the correct action cycle for a browser agent?",
+    "options": ["Observe, decide, act", "Forget to observe", "Only make decisions", "Click blindly"],
+    "answer": 0,
+    "explanation": "Read the page structure, choose an action, and observe again after acting until the goal is reached or the loop stops.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "4.2-browser-use",
+    "id": "4.2-browser-use-q2",
+    "question": "Which more stable locator does this chapter use for a documentation link?",
+    "options": ["Complete visible link text", "Generated CSS selector path", "Third element screen position", "Guessed documentation URL"],
+    "answer": 0,
+    "explanation": "Complete visible link text is more stable than generated attributes, element positions, and coordinates, but ambiguity must still be rejected.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "4.2-browser-use",
+    "id": "4.2-browser-use-q3",
+    "question": "What should a real browser agent do before sending a message?",
+    "options": ["Submit it immediately", "Get explicit user confirmation", "Broaden link text matching", "Write credentials to the page"],
+    "answer": 1,
+    "explanation": "Sending a message changes external state, so confirm the action and arguments first and respect domain and action permissions.",
+    "difficulty": "beginner"
+  }
+]

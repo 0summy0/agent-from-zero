@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "2.5-mcp",
+    "id": "2.5-mcp-q1",
+    "question": "Which transport does this chapter use between client and server?",
+    "options": ["Standard I/O", "HTTP requests", "GPU memory", "Remote database"],
+    "answer": 0,
+    "explanation": "The client starts a server subprocess and exchanges newline-delimited JSON through stdin and stdout.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.5-mcp",
+    "id": "2.5-mcp-q2",
+    "question": "Which method discovers tools before calling add?",
+    "options": ["Initialize", "List tools", "Call tool", "Unknown method"],
+    "answer": 1,
+    "explanation": "tools/list returns tool names, descriptions, and input schemas so the client can construct a call.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.5-mcp",
+    "id": "2.5-mcp-q3",
+    "question": "What should a server return for an unknown JSON-RPC method?",
+    "options": ["-32601", "-32602", "-32700", "-32000"],
+    "answer": 0,
+    "explanation": "-32601 means Method not found; -32602 means invalid params, and -32700 means a JSON parse failure.",
+    "difficulty": "beginner"
+  }
+]

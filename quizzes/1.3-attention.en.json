@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "1.3-attention",
+    "id": "1.3-attention-q1",
+    "question": "What is the main role of a value in scaled dot-product attention?",
+    "options": ["Provide mixed content", "Compute match scores", "Limit window length", "Generate candidates"],
+    "answer": 1,
+    "explanation": "The query and keys produce match scores, softmax produces weights, and those weights mix the values.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "1.3-attention",
+    "id": "1.3-attention-q2",
+    "question": "What does softmax turn scores into during attention?",
+    "options": ["Raw dot products", "Weights summing to one", "Equal-sized windows", "New key vectors"],
+    "answer": 1,
+    "explanation": "Softmax turns each score into a non-negative weight, and all weights in a row sum to 1.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "1.3-attention",
+    "id": "1.3-attention-q3",
+    "question": "Why is a context window not the same as a model's memory?",
+    "options": ["Windows store no tokens", "Attention deletes parameters", "Windows are temporary inputs", "Models only see windows"],
+    "answer": 2,
+    "explanation": "A context window limits the tokens accepted in one inference pass; it is not the long-term capability stored in model parameters by training.",
+    "difficulty": "beginner"
+  }
+]

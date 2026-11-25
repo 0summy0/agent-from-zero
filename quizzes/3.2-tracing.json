@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "3.2-tracing",
+    "id": "3.2-tracing-q1",
+    "question": "trace 中的 parent_span_id 主要表达什么关系？",
+    "options": ["span 父子关系", "用户登录密码", "文件写入权限", "模型训练轮数"],
+    "answer": 0,
+    "explanation": "parent_span_id 指向父 span，把规划、工具调用等步骤组织成有因果关系的树。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "3.2-tracing",
+    "id": "3.2-tracing-q2",
+    "question": "为什么 JSONL 适合存放 span 记录？",
+    "options": ["每行可独立解析", "必须包含图片", "自动隐藏错误", "不能追加写入"],
+    "answer": 0,
+    "explanation": "每行是一个完整 JSON 对象，可以逐行解析、流式读取，也便于追加新记录。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "3.2-tracing",
+    "id": "3.2-tracing-q3",
+    "question": "工具调用失败时，异常 span 记录最有价值的信息是什么？",
+    "options": ["失败层级与原因", "屏幕分辨率", "磁盘分区表", "随机访问次数"],
+    "answer": 0,
+    "explanation": "失败 span 的 status 和 error 属性指出错误发生在哪一层及其原因，帮助缩小调试范围。",
+    "difficulty": "beginner"
+  }
+]

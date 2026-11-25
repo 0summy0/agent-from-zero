@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "4.3-realtime-voice",
+    "id": "4.3-realtime-voice-q1",
+    "question": "Why is realtime voice more than ordinary chat plus TTS?",
+    "options": ["Streaming state and barge-in", "Only adding audio playback", "Turning chat logs into audio", "Synthesizing waves on a GPU"],
+    "answer": 0,
+    "explanation": "Realtime voice continuously handles streaming transcripts, turn state, and barge-in while coordinating cancellation between generation and playback.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "4.3-realtime-voice",
+    "id": "4.3-realtime-voice-q2",
+    "question": "What does a transcript.partial event do?",
+    "options": ["Generate an answer now", "Update the current transcript", "Send an audio waveform", "Clear the session state"],
+    "answer": 1,
+    "explanation": "A partial event only updates the current transcript; a final event commits it and queues an answer.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "4.3-realtime-voice",
+    "id": "4.3-realtime-voice-q3",
+    "question": "What can response.cancel discard?",
+    "options": ["Unsent answers", "Already emitted answers", "Committed transcripts", "New response requests"],
+    "answer": 0,
+    "explanation": "Cancellation applies only to pending answers; an answer that was already emitted cannot be recalled by this event.",
+    "difficulty": "beginner"
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "2.3-react-loop",
+    "id": "2.3-react-loop-q1",
+    "question": "工具返回的结果属于 ReAct 循环的哪个步骤？",
+    "options": ["思考", "行动", "观察", "结束"],
+    "answer": 2,
+    "explanation": "Observation 是工具执行后返回的结果，planner 会根据它选择下一步。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.3-react-loop",
+    "id": "2.3-react-loop-q2",
+    "question": "设置 max_steps 的主要作用是什么？",
+    "options": ["限制循环步数", "扩大工具数量", "保证答案正确", "增加模型参数"],
+    "answer": 0,
+    "explanation": "max_steps 为循环设置硬性上限，防止工具失败或 planner 重复行动时无限运行。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.3-react-loop",
+    "id": "2.3-react-loop-q3",
+    "question": "本章的确定性 planner 根据什么选择动作？",
+    "options": ["本地固定规则", "远程 API", "随机采样", "GPU 模型"],
+    "answer": 0,
+    "explanation": "本章用固定规则识别请求并检查已有观察，因此不依赖模型且结果可复现。",
+    "difficulty": "beginner"
+  }
+]

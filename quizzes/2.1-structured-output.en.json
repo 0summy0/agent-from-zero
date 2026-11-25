@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "2.1-structured-output",
+    "id": "2.1-structured-output-q1",
+    "question": "What is the main role of JSON Schema when validating a tool plan?",
+    "options": ["Check syntax only", "Call an external tool", "Validate fields and types", "Make the text longer"],
+    "answer": 2,
+    "explanation": "A schema defines required fields, types, and value constraints, such as requiring confidence to be a number from 0 to 1.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.1-structured-output",
+    "id": "2.1-structured-output-q2",
+    "question": "What does repair_json do when it sees JSON inside a Markdown code fence?",
+    "options": ["Strip fences and parse", "Fill in every missing field", "Call a network service", "Execute the plan"],
+    "answer": 0,
+    "explanation": "repair_json extracts and parses the JSON text as an object, but it neither fills in fields nor executes tools.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.1-structured-output",
+    "id": "2.1-structured-output-q3",
+    "question": "What happens to validation when confidence is the string high?",
+    "options": ["Treat it as one", "Raise a type error", "Change it to zero", "Delete the field"],
+    "answer": 1,
+    "explanation": "The schema requires confidence to be a number, so the string high causes a type error and fails validation.",
+    "difficulty": "beginner"
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "2.1-structured-output",
+    "id": "2.1-structured-output-q1",
+    "question": "JSON Schema 在工具计划验证中的主要作用是什么？",
+    "options": ["只检查 JSON 语法", "自动调用外部工具", "验证字段与类型", "把文本改写得更长"],
+    "answer": 2,
+    "explanation": "Schema 明确规定必需字段、类型和取值约束，例如 confidence 必须是 0 到 1 之间的数字。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.1-structured-output",
+    "id": "2.1-structured-output-q2",
+    "question": "repair_json 看到 Markdown 中的 JSON 代码围栏时会怎么做？",
+    "options": ["去掉代码围栏并解析", "自动补全所有字段", "调用联网服务", "直接执行计划"],
+    "answer": 0,
+    "explanation": "repair_json 提取围栏中的 JSON 文本并解析成对象，但不会补全字段或执行工具。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.1-structured-output",
+    "id": "2.1-structured-output-q3",
+    "question": "如果 confidence 被写成字符串 high，验证结果是什么？",
+    "options": ["被当作 1", "触发类型错误", "自动变成 0", "删除该字段"],
+    "answer": 1,
+    "explanation": "Schema 要求 confidence 是数字，因此字符串 high 会产生类型错误，验证不能通过。",
+    "difficulty": "beginner"
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "2.4-memory-context",
+    "id": "2.4-memory-context-q1",
+    "question": "Where does this chapter keep a message after it leaves the recent window?",
+    "options": ["Old summary", "System prompt", "Tool arguments", "Model weights"],
+    "answer": 0,
+    "explanation": "An evicted message enters the summary so it can provide rough background for later context.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.4-memory-context",
+    "id": "2.4-memory-context-q2",
+    "question": "What does this chapter use to approximate a token budget?",
+    "options": ["Pixel count", "Character count", "Audio duration", "File permissions"],
+    "answer": 1,
+    "explanation": "The chapter approximates the token budget with character count and estimates 4 characters per token.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "2.4-memory-context",
+    "id": "2.4-memory-context-q3",
+    "question": "Why can a summary lose information?",
+    "options": ["It compresses details", "Tools go online", "Windows never slide", "Characters lack length"],
+    "answer": 0,
+    "explanation": "A summary compresses old content; this chapter truncates long messages, and real summaries may merge or rewrite details.",
+    "difficulty": "beginner"
+  }
+]

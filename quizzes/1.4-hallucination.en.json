@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "1.4-hallucination",
+    "id": "1.4-hallucination-q1",
+    "question": "Why can a language model hallucinate?",
+    "options": ["Plausible text generation", "Deliberate deception", "Retrieval always fails", "Hardware failure"],
+    "answer": 0,
+    "explanation": "Hallucination is usually not deliberate lying; the model produces plausible text without factual support.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "1.4-hallucination",
+    "id": "1.4-hallucination-q2",
+    "question": "What should a minimal mechanism do without supporting evidence?",
+    "options": ["Abstain and explain", "Invent a likely answer", "Cite unrelated text", "Raise temperature"],
+    "answer": 0,
+    "explanation": "Without supporting evidence, the system should say it does not know or needs more information instead of inventing an answer.",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "1.4-hallucination",
+    "id": "1.4-hallucination-q3",
+    "question": "Which set contains engineering mitigations for hallucination?",
+    "options": ["Retrieval, citations, abstention", "Delete all training data", "Only enlarge context windows", "Ban all text generation"],
+    "answer": 0,
+    "explanation": "Retrieving evidence, citing sources, and allowing abstention reduce unsupported answers but do not eliminate hallucination completely.",
+    "difficulty": "beginner"
+  }
+]

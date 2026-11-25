@@ -1,0 +1,29 @@
+[
+  {
+    "chapter": "4.4-capstone",
+    "id": "4.4-capstone-q1",
+    "question": "本地研究台找不到支持证据时应该怎样回答？",
+    "options": ["编造一个答案", "明确选择弃权", "联网查找资料", "调用付费接口"],
+    "answer": 1,
+    "explanation": "证据门控要求没有本地支持时返回 abstain，而不是补写一个看似合理的事实。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "4.4-capstone",
+    "id": "4.4-capstone-q2",
+    "question": "ReAct 循环最多四步的主要作用是什么？",
+    "options": ["限制步数与工具调用", "扩大本地知识库", "保证回答永不犯错", "自动连接互联网"],
+    "answer": 0,
+    "explanation": "四步上限是硬性安全边界，限制规划与工具执行，不会扩大知识或保证事实正确。",
+    "difficulty": "beginner"
+  },
+  {
+    "chapter": "4.4-capstone",
+    "id": "4.4-capstone-q3",
+    "question": "毕业项目的计算器为什么拒绝函数调用？",
+    "options": ["解释 AST 白名单", "执行任意代码", "交给 shell 运行", "使用正则猜测"],
+    "answer": 0,
+    "explanation": "计算器只解释允许的数字与算术节点，不执行函数、名字、属性或任意 Python 代码。",
+    "difficulty": "beginner"
+  }
+]
