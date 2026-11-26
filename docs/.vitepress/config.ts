@@ -19,6 +19,7 @@ const zhChapters = [
   ['4.2 浏览器使用', '/zh/4.2-browser-use'],
   ['4.3 实时语音', '/zh/4.3-realtime-voice'],
   ['4.4 毕业项目', '/zh/4.4-capstone'],
+  ['附录：真实 LLM planner', '/zh/appendix-real-llm-planner'],
 ]
 
 const enChapters = [
@@ -40,6 +41,7 @@ const enChapters = [
   ['4.2 Browser Use', '/en/4.2-browser-use'],
   ['4.3 Realtime Voice', '/en/4.3-realtime-voice'],
   ['4.4 Capstone', '/en/4.4-capstone'],
+  ['Appendix: Real LLM Planner', '/en/appendix-real-llm-planner'],
 ]
 
 const sidebar = (chapters: string[][]) => [

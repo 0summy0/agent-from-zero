@@ -1,6 +1,6 @@
 [project]
 name = "agent-from-zero"
-version = "1.0.1"
+version = "1.1.0"
 description = "Bilingual zero-GPU AI Agent course with executable chapters"
 readme = "README.md"
 requires-python = ">=3.12"

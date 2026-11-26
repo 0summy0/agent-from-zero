@@ -3,7 +3,7 @@ layout: home
 hero:
   name: Agent From Zero
   text: 双语零基础 AI Agent 课程
-  tagline: 18 章 · 中英同步 · CPU 可跑 · 每章代码由 CI 真实执行
+  tagline: 18 章 + 进阶附录 · 中英同步 · CPU 可跑 · 每章代码由 CI 真实执行
   actions:
     - theme: brand
       text: 开始中文课程
@@ -33,3 +33,5 @@ uv run agent-from-zero --demo
 
 - 中文毕业项目：[4.4 本地研究台](/zh/4.4-capstone)
 - English capstone: [4.4 Local Research Desk](/en/4.4-capstone)
+- 进阶附录：[把确定性 planner 换成真实 LLM](/zh/appendix-real-llm-planner)
+- Advanced appendix: [Replace the planner with a real LLM](/en/appendix-real-llm-planner)

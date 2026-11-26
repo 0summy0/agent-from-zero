@@ -10,7 +10,7 @@
    - 提供 `main()` 打印结果
    - 默认无 GPU、无网络、无付费 API
 2. `docs/zh/<id>.md` 与 `docs/en/<id>.md`
-   - 八个 front-matter 字段：`id`、`title_zh`、`title_en`、`prereq`、`est_minutes`、`ram_min_mb`、`needs_api_key`、`source_revision`
+   - 九个 front-matter 字段：`id`、`title_zh`、`title_en`、`prereq`、`est_minutes`、`ram_min_mb`、`ram_basis`、`needs_api_key`、`source_revision`；`ram_basis` 只能是 `measured` 或 `estimate`
    - 作者标记 `<!-- AUTHOR: 你的名字 -->`
    - 中英代码块逐字一致
    - 标题数量差不超过 1
@@ -24,6 +24,8 @@
    - 验证最小路径
    - 验证关键不变量
    - CPU 耗时小于 3 分钟
+
+附录使用同样的双语 front-matter、代码块指纹和标题校验，但不需要 quiz；如果附录包含可执行示例，应提供对应测试或在文档中明确标记为进阶可选代码。
 
 ## 提交前检查
 

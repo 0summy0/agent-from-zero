@@ -2,13 +2,14 @@
 
 一套**中英双语、零 GPU 也能运行、每章代码都由 CI 真实执行**的 AI Agent 入门课程。
 
-当前版本包含 **18 章完整课程**、每章中英文档与自测题、可运行代码、冒烟测试，以及毕业项目 **Local Research Desk**。
+当前版本包含 **18 章完整课程 + 真实 LLM planner 双语附录**、每章中英文档与自测题、可运行代码、冒烟测试，以及毕业项目 **Local Research Desk**。
 
-A bilingual, zero-GPU AI Agent course with 18 executable chapters and a runnable capstone project.
+A bilingual, zero-GPU AI Agent course with 18 executable chapters, a real-LLM planner appendix, and a runnable capstone project.
 
 ## 项目状态
 
 - 18 章中英课程：已完成
+- 真实 LLM planner 双语附录：已完成
 - 每章代码 + 冒烟测试：已完成
 - 每章中英 quiz：各 3 题，共 54 组
 - 双语代码块与结构对等校验：已完成
@@ -72,6 +73,7 @@ uv run pytest -m "not requires_network and not requires_gpu and not requires_api
 | 4.2 浏览器使用 | [中文](docs/zh/4.2-browser-use.md) | [English](docs/en/4.2-browser-use.md) |
 | 4.3 实时语音 | [中文](docs/zh/4.3-realtime-voice.md) | [English](docs/en/4.3-realtime-voice.md) |
 | 4.4 毕业项目 | [中文](docs/zh/4.4-capstone.md) | [English](docs/en/4.4-capstone.md) |
+| 附录：真实 LLM planner | [中文](docs/zh/appendix-real-llm-planner.md) | [English](docs/en/appendix-real-llm-planner.md) |
 
 ## 双语网站
 
@@ -96,7 +98,7 @@ npm run docs:build
 - 每个章节代码能否导入并执行最小路径；
 - 中英章节 id 集合是否一致；
 - 中英代码块指纹是否逐字一致；
-- front-matter 八个字段是否齐全；
+- front-matter 九个字段是否齐全，`ram_basis` 是否明确区分实测与估算；
 - 中英 quiz 数量、答案下标和选项长度比例是否一致；
 - 所有直接依赖是否有上界；
 - CI 是否在 Linux 与 Windows 上通过锁定依赖和最新允许依赖两档测试；

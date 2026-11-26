@@ -11,6 +11,7 @@ REQUIRED_FIELDS = {
     "prereq",
     "est_minutes",
     "ram_min_mb",
+    "ram_basis",
     "needs_api_key",
     "source_revision",
 }
@@ -81,6 +82,11 @@ def validate():
                 errors.append(
                     f"front-matter missing fields: {language}/{chapter_id}: {', '.join(missing)}"
                 )
+            if fields.get("ram_basis") not in {"measured", "estimate"}:
+                errors.append(
+                    f"front-matter invalid ram_basis: {language}/{chapter_id}: "
+                    f"{fields.get('ram_basis')!r}"
+                )
         zh_revision = front_matter(zh_text).get("source_revision")
         en_revision = front_matter(en_text).get("source_revision")
         if zh_revision is not None and en_revision is not None and zh_revision != en_revision:
@@ -94,8 +100,16 @@ def main():
         print(f"FAIL: {error}")
     if errors:
         return 1
-    count = len(list((ROOT / "docs" / "zh").glob("*.md")))
-    print(f"parity ok: {count} bilingual chapter(s)")
+    zh_paths = {path.stem for path in (ROOT / "docs" / "zh").glob("*.md")}
+    chapter_ids = {key for key in zh_paths if not key.startswith("appendix-")}
+    appendix_ids = {key for key in zh_paths if key.startswith("appendix-")}
+    if not chapter_ids:
+        print("FAIL: no Chinese chapters found")
+        return 1
+    print(
+        f"parity ok: {len(chapter_ids)} bilingual chapter(s), "
+        f"{len(appendix_ids)} bilingual appendix(es)"
+    )
     return 0
 
 

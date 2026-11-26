@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0] - 2026-11-27
+
+### Added
+
+- 双语进阶附录：把确定性 planner 替换为真实 LLM，同时保留计划校验、工具白名单、步数限制、trace 和评测。
+- 第 3.3 章新增可复现的规则绕过练习与分层防御讨论。
+- 第 2.4 章补充 system prompt pinning 与上下文预算取舍说明。
+- 所有章节新增 `ram_basis`，明确区分 `measured` 与 `estimate`。
+
+### Changed
+
+- 双语校验分别报告章节与附录数量。
+- 站点导航与 README 增加真实 LLM planner 附录入口。
+
 ## [1.0.1] - 2026-11-27
 
 ### Fixed
