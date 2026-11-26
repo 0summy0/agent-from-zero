@@ -62,7 +62,9 @@ def validate_questions(path, questions, seen, errors):
 
 def main():
     quiz_dir = ROOT / "quizzes"
-    zh_paths = sorted(path for path in quiz_dir.glob("*.json") if not path.name.endswith(".en.json"))
+    zh_paths = sorted(
+        path for path in quiz_dir.glob("*.json") if not path.name.endswith(".en.json")
+    )
     errors = []
     seen = {}
     zh_total = 0
@@ -83,12 +85,18 @@ def main():
         if len(zh_questions) != len(en_questions):
             errors.append(f"{zh_path.stem}: Chinese and English question counts differ")
             continue
-        for index, (zh_item, en_item) in enumerate(zip(zh_questions, en_questions), start=1):
+        for index, (zh_item, en_item) in enumerate(
+            zip(zh_questions, en_questions, strict=True), start=1
+        ):
             if not isinstance(zh_item, dict) or not isinstance(en_item, dict):
                 continue
             zh_options = zh_item.get("options")
             en_options = en_item.get("options")
-            if not isinstance(zh_options, list) or not isinstance(en_options, list) or len(zh_options) != len(en_options):
+            if (
+                not isinstance(zh_options, list)
+                or not isinstance(en_options, list)
+                or len(zh_options) != len(en_options)
+            ):
                 errors.append(f"{zh_path.stem} question {index}: option counts differ")
             if zh_item.get("answer") != en_item.get("answer"):
                 errors.append(f"{zh_path.stem} question {index}: answer indices differ")
@@ -96,7 +104,9 @@ def main():
         print(f"FAIL: {error}")
     if errors:
         return 1
-    print(f"quiz ok: {len(zh_paths)} chapter(s), {zh_total} Chinese questions, {en_total} English questions")
+    print(
+        f"quiz ok: {len(zh_paths)} chapter(s), {zh_total} Chinese questions, {en_total} English questions"
+    )
     return 0
 
 

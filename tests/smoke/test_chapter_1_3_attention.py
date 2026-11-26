@@ -33,7 +33,9 @@ def test_output_dimensions_match_the_toy_vectors():
         rows = result[demo]["rows"]
         assert all(len(row["context_vector"]) == dimension for row in rows)
         assert all(len(row["scaled_scores"]) == len(result[demo]["kept_tokens"]) for row in rows)
-        assert all(len(row["attention_weights"]) == len(result[demo]["kept_tokens"]) for row in rows)
+        assert all(
+            len(row["attention_weights"]) == len(result[demo]["kept_tokens"]) for row in rows
+        )
 
 
 def test_truncation_keeps_the_most_recent_tokens_in_order():

@@ -1,4 +1,6 @@
-import tomllib, sys
+import sys
+import tomllib
+
 from packaging.requirements import Requirement
 
 data = tomllib.load(open("pyproject.toml", "rb"))

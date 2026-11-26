@@ -103,7 +103,9 @@ def _city_name(question):
     for pattern in _CITY_PATTERNS:
         match = pattern.search(question)
         if match:
-            city = re.split(r"\s+(?:and|then)\b", match.group(1), maxsplit=1, flags=re.IGNORECASE)[0]
+            city = re.split(r"\s+(?:and|then)\b", match.group(1), maxsplit=1, flags=re.IGNORECASE)[
+                0
+            ]
             return city.strip(" ,.!?")
     return None
 

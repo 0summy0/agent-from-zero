@@ -1,0 +1,39 @@
+import re
+
+INJECTION_RULES = (
+    (
+        "ignore_previous_instructions",
+        re.compile(
+            r"\b(?:ignore|disregard|forget|override)\s+(?:all\s+)?(?:your\s+)?"
+            r"(?:previous|prior|above|earlier|current)?\s*(?:instructions|rules|prompt)\b"
+            r"|(?:忽略|无视|忘记|不要遵守|覆盖)\s*(?:(?:所有|全部|你的)\s*)?"
+            r"(?:(?:之前|先前|以上|前面|当前)\s*(?:的\s*)?)?"
+            r"(?:(?:所有|全部|你的)\s*)?(?:的\s*)?(?:指令|指示|规则|提示)"
+        ),
+    ),
+    (
+        "reveal_system_prompt",
+        re.compile(
+            r"\b(?:reveal|show|print|output|disclose|expose|leak|repeat|tell)\s+"
+            r"(?:me\s+)?(?:(?:your|the|all)\s+)?"
+            r"(?:system|developer|hidden|secret)\s+(?:prompt|instructions|message)\b"
+            r"|(?:泄露|显示|打印|输出|重复|告诉我)\s*(?:你的|所有|全部)?\s*"
+            r"(?:系统|开发者|隐藏|秘密)\s*(?:提示|提示词|指令|消息)"
+        ),
+    ),
+    (
+        "unauthorized_tool_call",
+        re.compile(
+            r"\b(?:call|use|invoke|execute|run)\s+(?:an?\s+)?"
+            r"(?:unauthorized|unapproved|forbidden|admin(?:istrative)?)\s+"
+            r"(?:tool|function|command)\b"
+            r"|\b(?:call|use|invoke|execute|run)\s+(?:an?\s+)?"
+            r"(?:tool|function|command)\s+without\s+"
+            r"(?:permission|authorization|approval)\b"
+            r"|(?:调用|使用|执行)\s*(?:一个|一项)?\s*"
+            r"(?:未授权|未获批准|禁止|管理员)\s*(?:工具|函数|命令)"
+            r"|(?:未经授权|没有权限|未获批准)(?:地)?\s*"
+            r"(?:调用|使用|执行)\s*(?:任意|管理|危险)?\s*(?:工具|函数|命令)"
+        ),
+    ),
+)

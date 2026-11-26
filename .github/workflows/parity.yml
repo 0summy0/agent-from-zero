@@ -10,6 +10,7 @@ on:
       - quizzes/**
       - tests/**
       - tools/**
+      - src/**
       - .python-version
       - .github/workflows/**
   pull_request:
@@ -21,6 +22,7 @@ on:
       - quizzes/**
       - tests/**
       - tools/**
+      - src/**
       - .python-version
       - .github/workflows/**
   workflow_dispatch:

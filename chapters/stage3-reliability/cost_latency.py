@@ -235,12 +235,8 @@ def run_minimal_path() -> dict:
     return {
         "first_call": first_call,
         "cached_call": cached_call,
-        "cost_reduction_usd": round(
-            first_call["cost_usd"] - cached_call["cost_usd"], 9
-        ),
-        "latency_reduction_ms": round(
-            first_call["latency_ms"] - cached_call["latency_ms"], 3
-        ),
+        "cost_reduction_usd": round(first_call["cost_usd"] - cached_call["cost_usd"], 9),
+        "latency_reduction_ms": round(first_call["latency_ms"] - cached_call["latency_ms"], 3),
         "cache_stats": cache.stats(),
         "routing_example": routing,
     }

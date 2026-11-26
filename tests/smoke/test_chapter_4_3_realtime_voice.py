@@ -96,12 +96,8 @@ def test_minimal_path_preserves_event_order_and_cancels_once():
         ("transcript.final", "response_queued"),
         ("response.cancel", "response_cancelled"),
     ]
-    assert [item["text"] for item in result["emitted_responses"]] == [
-        "确定性回答：请帮我总结"
-    ]
-    assert [item["text"] for item in result["cancelled_responses"]] == [
-        "确定性回答：讲个笑话"
-    ]
+    assert [item["text"] for item in result["emitted_responses"]] == ["确定性回答：请帮我总结"]
+    assert [item["text"] for item in result["cancelled_responses"]] == ["确定性回答：讲个笑话"]
     assert result["pending_responses"] == []
 
 

@@ -94,10 +94,7 @@ def retrieve_evidence(question, knowledge_base):
         matches.append((score, item))
 
     matches.sort(key=lambda match: (-match[0], match[1]["id"]))
-    return [
-        {"id": item["id"], "title": item["title"], "text": item["text"]}
-        for _, item in matches
-    ]
+    return [{"id": item["id"], "title": item["title"], "text": item["text"]} for _, item in matches]
 
 
 def answer_with_evidence(question, knowledge_base):
@@ -113,7 +110,7 @@ def answer_with_evidence(question, knowledge_base):
     primary = evidence[0]
     return {
         "status": "grounded",
-        "answer": f'{primary["text"]} [{primary["id"]}]',
+        "answer": f"{primary['text']} [{primary['id']}]",
         "evidence": evidence,
         "query_keywords": query_keywords(question),
     }

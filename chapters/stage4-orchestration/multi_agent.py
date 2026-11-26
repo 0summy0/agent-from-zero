@@ -1,7 +1,6 @@
 import json
 import re
 
-
 CHAPTER_ID = "4.1-multi-agent"
 DEFAULT_REQUEST = "请说明多智能体协作。要点：角色分工、独立检查。"
 MAX_ROUNDS = 2

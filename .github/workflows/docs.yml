@@ -6,11 +6,13 @@ on:
     paths:
       - docs/**
       - package.json
+      - package-lock.json
       - .github/workflows/docs.yml
   pull_request:
     paths:
       - docs/**
       - package.json
+      - package-lock.json
       - .github/workflows/docs.yml
   workflow_dispatch:
 
@@ -31,8 +33,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+          cache: npm
       - name: Install docs dependencies
-        run: npm install --no-package-lock --no-audit --no-fund
+        run: npm ci --no-audit --no-fund
       - name: Build bilingual site
         run: npm run docs:build
       - name: Configure Pages

@@ -12,7 +12,7 @@ A bilingual, zero-GPU AI Agent course with 18 executable chapters and a runnable
 - 每章代码 + 冒烟测试：已完成
 - 每章中英 quiz：各 3 题，共 54 组
 - 双语代码块与结构对等校验：已完成
-- 依赖锁定、CI 矩阵、每日漂移检查：已完成
+- 依赖锁定、CI 矩阵、每日漂移检查、ruff 与 Windows CI：已完成
 - VitePress 双语网站：配置完成，由 GitHub Actions 构建部署
 - 毕业项目 Local Research Desk：可本地运行
 - 真人试读与阅读时长测量：待完成
@@ -99,8 +99,11 @@ npm run docs:build
 - front-matter 八个字段是否齐全；
 - 中英 quiz 数量、答案下标和选项长度比例是否一致；
 - 所有直接依赖是否有上界；
-- CI 是否在 Linux 上通过锁定依赖和最新允许依赖两档测试；
-- 每日调度是否能在上游依赖漂移时发现问题；
+- CI 是否在 Linux 与 Windows 上通过锁定依赖和最新允许依赖两档测试；
+- 每日调度是否能在上游依赖漂移时发现问题，并避免重复开 issue；
+- Node 侧是否使用 `package-lock.json` + `npm ci`；
+- Python 代码是否通过 ruff lint 与 format 检查；
+- 关键章节输出是否符合 golden JSON Schema；
 - 有 notebook 时是否由 nbval 真正执行。
 
 相关脚本：
@@ -110,6 +113,8 @@ npm run docs:build
 - `tools/check_quiz.py`
 - `tests/meta/test_repo_contract.py`
 - `tests/smoke/test_chapter_*.py`
+- `tests/test_golden_contracts.py`
+- `uv run ruff check .`
 
 ## 项目结构
 
@@ -127,7 +132,8 @@ agent-from-zero/
 ├── .github/workflows/        # CI、每日漂移、notebook、网站部署
 ├── pyproject.toml
 ├── uv.lock
-└── package.json
+├── package.json
+└── package-lock.json
 ```
 
 ## 教学边界
@@ -143,8 +149,7 @@ agent-from-zero/
 
 1. 找 3 位零基础读者试读，记录卡点与真实阅读时长。
 2. 根据试读结果修订第一章，再决定是否增加扩展章节。
-3. 首次 push 后确认所有 GitHub Actions，尤其是每日漂移与 Pages 部署。
-4. 可选增强：tokenizer 坏缓存自愈、每日漂移 issue 去重、Windows CI 调研。
+3. 可选增强：tokenizer 坏缓存自愈、真实 LLM planner 附录。
 
 ## 作者
 

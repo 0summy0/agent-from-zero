@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.0.1] - 2026-11-27
+
+### Fixed
+
+- 默认 trace 改用临时目录上下文，运行结束自动清理，不再泄漏 `local-research-desk-*`。
+- 第 3.3 章与毕业项目共用同一套提示注入规则，避免规则漂移。
+- 每日依赖漂移失败时复用同一 open issue，不再每天创建重复 issue。
+- 所有 Python workflow 的路径过滤补上 `src/**`。
+
+### Added
+
+- `package-lock.json`，文档构建改用 `npm ci`。
+- ruff lint/format 工作流。
+- 2.3 ReAct 与 4.4 capstone 的 golden JSON Schema 契约。
+- Windows 平台加入 locked/latest-stable CI 矩阵。
+
 ## [1.0.0] - 2026-11-26
 
 ### Added

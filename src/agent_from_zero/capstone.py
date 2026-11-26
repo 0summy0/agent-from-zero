@@ -20,6 +20,8 @@ from pathlib import Path
 
 from jsonschema import Draft202012Validator
 
+from .security_rules import INJECTION_RULES
+
 CHAPTER_ID = "4.4-capstone"
 PROJECT_NAME = "Local Research Desk"
 MAX_STEPS = 4
@@ -135,42 +137,6 @@ _CITY_PATTERNS = (
     ),
 )
 
-INJECTION_RULES = (
-    (
-        "ignore_previous_instructions",
-        re.compile(
-            r"\b(?:ignore|disregard|forget|override)\s+(?:all\s+)?(?:your\s+)?"
-            r"(?:previous|prior|above|earlier|current)?\s*(?:instructions|rules|prompt)\b"
-            r"|(?:忽略|无视|忘记|不要遵守|覆盖)\s*(?:(?:所有|全部|你的)\s*)?"
-            r"(?:(?:之前|先前|以上|前面|当前)\s*(?:的\s*)?)?"
-            r"(?:(?:所有|全部|你的)\s*)?(?:的\s*)?(?:指令|指示|规则|提示)"
-        ),
-    ),
-    (
-        "reveal_system_prompt",
-        re.compile(
-            r"\b(?:reveal|show|print|output|disclose|expose|leak|repeat|tell)\s+"
-            r"(?:me\s+)?(?:(?:your|the|all)\s+)?"
-            r"(?:system|developer|hidden|secret)\s+(?:prompt|instructions|message)\b"
-            r"|(?:泄露|显示|打印|输出|重复|告诉我)\s*(?:你的|所有|全部)?\s*"
-            r"(?:系统|开发者|隐藏|秘密)\s*(?:提示|提示词|指令|消息)"
-        ),
-    ),
-    (
-        "unauthorized_tool_call",
-        re.compile(
-            r"\b(?:call|use|invoke|execute|run)\s+(?:an?\s+)?"
-            r"(?:unauthorized|unapproved|forbidden|admin(?:istrative)?)\s+"
-            r"(?:tool|function|command)\b"
-            r"|\b(?:call|use|invoke|execute|run)\s+(?:an?\s+)?"
-            r"(?:tool|function|command)\s+without\s+"
-            r"(?:permission|authorization|approval)\b"
-            r"|(?:调用|使用|执行)\s*(?:一个|一项)?\s*"
-            r"(?:未授权|未获批准|禁止|管理员)\s*(?:工具|函数|命令)"
-        ),
-    ),
-)
-
 _ARGUMENT_SCHEMAS = {
     "calculator": {
         "type": "object",
@@ -237,7 +203,11 @@ PLAN_SCHEMA = {
                 "properties": {
                     "arguments": {
                         "properties": {
-                            "evidence_ids": {"minItems" if status == "grounded" else "maxItems": 1 if status == "grounded" else 0}
+                            "evidence_ids": {
+                                "minItems" if status == "grounded" else "maxItems": 1
+                                if status == "grounded"
+                                else 0
+                            }
                         }
                     }
                 }
@@ -364,16 +334,13 @@ def lookup_city(city):
     data = CITY_DATA.get(key)
     if data is None:
         return {"ok": False, "tool": "lookup_city", "error": "city not found"}
-    text = (
-        f'{data["name"]} is a city in {data["country"]}; '
-        f'its timezone is {data["timezone"]}.'
-    )
+    text = f"{data['name']} is a city in {data['country']}; its timezone is {data['timezone']}."
     return {
         "ok": True,
         "tool": "lookup_city",
         "record": {
-            "id": f'city-{key}',
-            "title": f'{data["name"]} city facts',
+            "id": f"city-{key}",
+            "title": f"{data['name']} city facts",
             "text": text,
             "source": "local-city-table",
         },
@@ -426,7 +393,7 @@ class ContextMemory:
             compact = " ".join(old["content"].split())
             if len(compact) > self.summary_message_chars:
                 compact = compact[: self.summary_message_chars - 3] + "..."
-            fragment = f'{old["role"]}: {compact}'
+            fragment = f"{old['role']}: {compact}"
             self.summary = f"{self.summary} | {fragment}" if self.summary else fragment
             self.evicted_count += 1
             evicted.append(dict(old))
@@ -437,7 +404,7 @@ class ContextMemory:
         if self.summary:
             sections.append(f"Earlier summary: {self.summary}")
         sections.append("Recent messages:")
-        sections.extend(f'{item["role"]}: {item["content"]}' for item in self.messages)
+        sections.extend(f"{item['role']}: {item['content']}" for item in self.messages)
         full = "\n".join(sections)
         if len(full) <= self.char_budget:
             return full
@@ -461,7 +428,7 @@ class ContextMemory:
         if self.summary:
             sections.append(f"Earlier summary: {self.summary}")
         sections.append("Recent messages:")
-        sections.extend(f'{item["role"]}: {item["content"]}' for item in self.messages)
+        sections.extend(f"{item['role']}: {item['content']}" for item in self.messages)
         return "\n".join(sections)
 
 
@@ -476,15 +443,16 @@ def _city_name(question):
     for pattern in _CITY_PATTERNS:
         match = pattern.search(question)
         if match:
-            city = re.split(r"\s+(?:and|then)\b", match.group(1), maxsplit=1, flags=re.IGNORECASE)[0]
+            city = re.split(r"\s+(?:and|then)\b", match.group(1), maxsplit=1, flags=re.IGNORECASE)[
+                0
+            ]
             return city.strip(" ,.!?")
     return None
 
 
 def _has_observation(trace, action):
     return any(
-        step["action"]["action"] == action and step["observation"] is not None
-        for step in trace
+        step["action"]["action"] == action and step["observation"] is not None for step in trace
     )
 
 
@@ -517,9 +485,7 @@ def deterministic_planner(question, trace):
     """Choose one validated action from fixed rules and earlier observations."""
     expression = _calculation_expression(question)
     city = _city_name(question)
-    knowledge_needed = city is None and (
-        expression is None or bool(retrieve_knowledge(question))
-    )
+    knowledge_needed = city is None and (expression is None or bool(retrieve_knowledge(question)))
 
     if expression is not None and not _has_observation(trace, "calculator"):
         return {
@@ -557,7 +523,9 @@ def deterministic_planner(question, trace):
     if failed_actions:
         return {
             "thought": "A required local tool failed, so I will stop without guessing.",
-            "plan": _abstain("tool_unavailable", "I can't verify this request from the available local tools."),
+            "plan": _abstain(
+                "tool_unavailable", "I can't verify this request from the available local tools."
+            ),
         }
     if knowledge_needed:
         retrieval = _observation(trace, "search_knowledge")
@@ -578,7 +546,7 @@ def deterministic_planner(question, trace):
             {
                 "id": "calculator",
                 "title": "Local calculation",
-                "text": f'{calculation["expression"]} = {rendered}',
+                "text": f"{calculation['expression']} = {rendered}",
                 "source": "safe-calculator",
             }
         )
@@ -586,20 +554,25 @@ def deterministic_planner(question, trace):
     if city_result is not None:
         record = city_result["record"]
         evidence.append(record)
-        answer_parts.append(f'{record["text"]} [{record["id"]}]')
+        answer_parts.append(f"{record['text']} [{record['id']}]")
     if retrieval is not None and retrieval["records"]:
         record = retrieval["records"][0]
         evidence.append(record)
-        answer_parts.append(f'{record["text"]} [{record["id"]}]')
+        answer_parts.append(f"{record['text']} [{record['id']}]")
 
     if evidence:
         return {
             "thought": "Every requested local observation is complete, so I will answer with citations.",
-            "plan": _finish_plan(" ".join(answer_parts), "grounded", evidence, "supported_by_local_observations"),
+            "plan": _finish_plan(
+                " ".join(answer_parts), "grounded", evidence, "supported_by_local_observations"
+            ),
         }
     return {
         "thought": "The request matches no supported local task, so I will abstain.",
-        "plan": _abstain("unsupported_request", "I can only answer the local knowledge, city, and arithmetic patterns in this project."),
+        "plan": _abstain(
+            "unsupported_request",
+            "I can only answer the local knowledge, city, and arithmetic patterns in this project.",
+        ),
     }
 
 
@@ -613,20 +586,24 @@ def _write_trace(directory, question, trace, status, evidence):
     with path.open("w", encoding="utf-8", newline="\n") as stream:
         for step in trace:
             event = {"event": "step", **step}
-            stream.write(json.dumps(event, ensure_ascii=False, sort_keys=True, allow_nan=False) + "\n")
+            stream.write(
+                json.dumps(event, ensure_ascii=False, sort_keys=True, allow_nan=False) + "\n"
+            )
         summary = {
             "event": "result",
             "question": question,
             "status": status,
             "evidence_ids": [item["id"] for item in evidence],
         }
-        stream.write(json.dumps(summary, ensure_ascii=False, sort_keys=True, allow_nan=False) + "\n")
+        stream.write(
+            json.dumps(summary, ensure_ascii=False, sort_keys=True, allow_nan=False) + "\n"
+        )
     return path
 
 
 def _evaluate(status, evidence, answer, trace, security):
     evidence_ids = {item["id"] for item in evidence}
-    cited_ids = {item["id"] for item in evidence if f'[{item["id"]}]' in answer}
+    cited_ids = {item["id"] for item in evidence if f"[{item['id']}]" in answer}
     grounded = status == "grounded"
     return {
         "task_success": grounded,
@@ -651,7 +628,9 @@ def run(question, *, trace_dir=None):
 
     security = scan_prompt_injection(question)
     memory = ContextMemory()
-    memory.add_message("system", "Answer only from local evidence; cite IDs; abstain when unsupported.")
+    memory.add_message(
+        "system", "Answer only from local evidence; cite IDs; abstain when unsupported."
+    )
     memory.add_message("user", question)
     trace = []
     evidence = []
@@ -685,7 +664,9 @@ def run(question, *, trace_dir=None):
             plan = decision["plan"]
             valid, errors = validate_plan(plan)
             if not valid:
-                raise RuntimeError("internal planner produced an invalid plan: " + "; ".join(errors))
+                raise RuntimeError(
+                    "internal planner produced an invalid plan: " + "; ".join(errors)
+                )
 
             action = plan["action"]
             observation = None if action == "finish" else execute_action(plan)
@@ -702,7 +683,9 @@ def run(question, *, trace_dir=None):
             memory.add_message("assistant", decision["thought"])
             if observation is not None:
                 tool_calls += 1
-                memory.add_message("tool", json.dumps(observation, ensure_ascii=False, sort_keys=True))
+                memory.add_message(
+                    "tool", json.dumps(observation, ensure_ascii=False, sort_keys=True)
+                )
 
             if action == "finish":
                 arguments = plan["arguments"]
@@ -733,7 +716,7 @@ def run(question, *, trace_dir=None):
                         by_id["calculator"] = {
                             "id": "calculator",
                             "title": "Local calculation",
-                            "text": f'{observation_data["expression"]} = {rendered}',
+                            "text": f"{observation_data['expression']} = {rendered}",
                             "source": "safe-calculator",
                         }
                 if not set(arguments["evidence_ids"]).issubset(known_ids):
@@ -751,8 +734,16 @@ def run(question, *, trace_dir=None):
     memory.add_message("assistant", answer)
 
     temporary_trace = trace_dir is None
-    directory = Path(tempfile.mkdtemp(prefix="local-research-desk-")) if temporary_trace else Path(trace_dir).expanduser()
-    trace_path = _write_trace(directory, question, trace, status, evidence)
+    if temporary_trace:
+        with tempfile.TemporaryDirectory(prefix="local-research-desk-") as temporary_root:
+            trace_path = _write_trace(Path(temporary_root), question, trace, status, evidence)
+            trace_name = trace_path.name
+        trace_directory = None
+    else:
+        trace_directory = Path(trace_dir).expanduser()
+        trace_path = _write_trace(trace_directory, question, trace, status, evidence)
+        trace_name = trace_path.name
+
     checked = sum("plan_valid" in step for step in trace)
     usage = {
         "model": None,
@@ -775,8 +766,8 @@ def run(question, *, trace_dir=None):
         "evidence": evidence,
         "trace": trace,
         "trace_file": {
-            "name": trace_path.name,
-            "directory": None if temporary_trace else str(directory.resolve()),
+            "name": trace_name,
+            "directory": None if trace_directory is None else str(trace_directory.resolve()),
             "temporary": temporary_trace,
             "event_count": len(trace) + 1,
         },
@@ -833,7 +824,9 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=PROJECT_NAME)
     parser.add_argument("question", nargs="?", help="one local research question")
     parser.add_argument("--demo", action="store_true", help="run grounded and abstention examples")
-    parser.add_argument("--trace-dir", help="directory for trace.jsonl (default: a temporary directory)")
+    parser.add_argument(
+        "--trace-dir", help="directory for trace.jsonl (default: a temporary directory)"
+    )
     args = parser.parse_args(argv)
     if args.demo and args.question:
         parser.error("use either a positional question or --demo, not both")

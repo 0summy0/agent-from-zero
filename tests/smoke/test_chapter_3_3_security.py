@@ -4,6 +4,8 @@ from pathlib import Path
 
 import pytest
 
+from agent_from_zero import capstone
+
 ROOT = Path(__file__).resolve().parents[2]
 SPEC = importlib.util.spec_from_file_location(
     "chapter_3_3_security",
@@ -11,6 +13,10 @@ SPEC = importlib.util.spec_from_file_location(
 )
 security = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(security)
+
+
+def test_injection_rules_are_shared_with_capstone():
+    assert security.INJECTION_RULES is capstone.INJECTION_RULES
 
 
 def test_chapter_module_and_result_contract():

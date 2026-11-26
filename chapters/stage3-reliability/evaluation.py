@@ -1,6 +1,5 @@
 import json
 
-
 CHAPTER_ID = "3.1-evaluation"
 
 # A tiny, fixed dataset: no downloads, model calls, or random sampling.
@@ -64,11 +63,9 @@ def evaluate(dataset, predictions, strategy="exact"):
         raise ValueError("predictions must have one answer per dataset item")
 
     results = []
-    for item, prediction in zip(dataset, predictions):
+    for item, prediction in zip(dataset, predictions, strict=True):
         if strategy == "exact":
-            passed = exact_match(
-                prediction, item["expected_answer"], item.get("aliases", ())
-            )
+            passed = exact_match(prediction, item["expected_answer"], item.get("aliases", ()))
         else:
             passed = contains_expected(prediction, item["expected_answer"])
         results.append(

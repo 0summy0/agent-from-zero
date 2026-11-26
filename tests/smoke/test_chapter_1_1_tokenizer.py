@@ -42,12 +42,17 @@ def test_chapter_module_imports():
 @pytest.mark.requires_network
 def test_tokenizer_minimal_path_matches_golden():
     result = tokenizer.run_minimal_path()
-    golden = json.loads((ROOT / "tests" / "golden" / "1.1-tokenizer.json").read_text(encoding="utf-8"))
+    golden = json.loads(
+        (ROOT / "tests" / "golden" / "1.1-tokenizer.json").read_text(encoding="utf-8")
+    )
     assert_golden_shape(result, golden)
     assert result["chinese"]["characters"] == 10
     assert result["english"]["characters"] == 25
     for sample in (result["chinese"], result["english"]):
         assert sample["token_count"] == len(sample["token_ids"]) == len(sample["tokens"])
         assert sample["token_count"] > 0
-    assert result["token_count_difference"] == result["chinese"]["token_count"] - result["english"]["token_count"]
+    assert (
+        result["token_count_difference"]
+        == result["chinese"]["token_count"] - result["english"]["token_count"]
+    )
     assert result["model_weights_downloaded"] is False

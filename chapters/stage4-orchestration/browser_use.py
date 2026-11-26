@@ -41,15 +41,55 @@ LOCAL_PAGES = {
 }
 
 _BLOCK_TAGS = {
-    "address", "article", "aside", "blockquote", "br", "dd", "div", "dl", "dt",
-    "figcaption", "figure", "footer", "h1", "h2", "h3", "h4", "h5", "h6",
-    "header", "hr", "li", "main", "nav", "ol", "p", "pre", "section", "table",
-    "td", "th", "tr", "ul",
+    "address",
+    "article",
+    "aside",
+    "blockquote",
+    "br",
+    "dd",
+    "div",
+    "dl",
+    "dt",
+    "figcaption",
+    "figure",
+    "footer",
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6",
+    "header",
+    "hr",
+    "li",
+    "main",
+    "nav",
+    "ol",
+    "p",
+    "pre",
+    "section",
+    "table",
+    "td",
+    "th",
+    "tr",
+    "ul",
 }
 _NON_VISIBLE_TAGS = {"script", "style", "template", "noscript"}
 _VOID_TAGS = {
-    "area", "base", "br", "col", "embed", "hr", "img", "input", "link",
-    "meta", "param", "source", "track", "wbr",
+    "area",
+    "base",
+    "br",
+    "col",
+    "embed",
+    "hr",
+    "img",
+    "input",
+    "link",
+    "meta",
+    "param",
+    "source",
+    "track",
+    "wbr",
 }
 
 
@@ -158,7 +198,9 @@ class BrowserTool:
             raise ValueError(f"unknown local page: {url}")
         parsed = urlsplit(url)
         if parsed.scheme != "local" or not parsed.netloc or parsed.query or parsed.fragment:
-            raise ValueError("only absolute local:// page URLs without query or fragment are allowed")
+            raise ValueError(
+                "only absolute local:// page URLs without query or fragment are allowed"
+            )
         self._page = parse_html(self._pages[url])
         self._current_url = url
         return {"url": self._current_url, **self._page}
@@ -171,7 +213,8 @@ class BrowserTool:
         if not target:
             raise ValueError("link text must be a non-empty string")
         matches = [
-            link for link in self._page["links"]
+            link
+            for link in self._page["links"]
             if normalize_text(link["text"]).casefold() == target.casefold()
         ]
         if not matches:

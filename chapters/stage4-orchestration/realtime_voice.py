@@ -94,9 +94,7 @@ class RealtimeSession:
                 record = {"event": event_type, "outcome": "create_ignored"}
         else:
             target_id = event.get("response_id")
-            if target_id is not None and (
-                not isinstance(target_id, str) or not target_id.strip()
-            ):
+            if target_id is not None and (not isinstance(target_id, str) or not target_id.strip()):
                 raise ValueError("response_id must be a non-empty string")
             if target_id is None:
                 cancelled = self._pending_responses

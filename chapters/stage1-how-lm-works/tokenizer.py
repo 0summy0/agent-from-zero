@@ -60,7 +60,9 @@ def encode_sample(tokenizer, text):
     return {
         "text": text,
         "characters": len(text),
-        "tokens": [tokenizer.decode([token_id], skip_special_tokens=False) for token_id in encoding.ids],
+        "tokens": [
+            tokenizer.decode([token_id], skip_special_tokens=False) for token_id in encoding.ids
+        ],
         "token_ids": encoding.ids,
         "token_count": len(encoding.ids),
     }

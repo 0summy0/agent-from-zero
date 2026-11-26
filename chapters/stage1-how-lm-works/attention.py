@@ -18,7 +18,7 @@ def dot_product(left, right):
     """计算两个等长向量的点积：对应位置相乘，再相加。"""
     if not left or len(left) != len(right):
         raise ValueError("vectors must be non-empty and have the same length")
-    return sum(a * b for a, b in zip(left, right))
+    return sum(a * b for a, b in zip(left, right, strict=True))
 
 
 def softmax(scores):
@@ -47,7 +47,7 @@ def weighted_sum(weights, values):
     if any(len(value) != dimension for value in values):
         raise ValueError("value vectors must have the same length")
     return [
-        sum(weight * value[index] for weight, value in zip(weights, values))
+        sum(weight * value[index] for weight, value in zip(weights, values, strict=True))
         for index in range(dimension)
     ]
 
@@ -82,23 +82,25 @@ def attention_demo(tokens, vectors, window_size):
     if len(tokens) != len(vectors):
         raise ValueError("tokens and vectors must have the same length")
     recent_tokens = truncate_to_recent_tokens(tokens, window_size)
-    recent_vectors = vectors[len(tokens) - len(recent_tokens):]
+    recent_vectors = vectors[len(tokens) - len(recent_tokens) :]
     keys = [item[1] for item in recent_vectors]
     values = [item[2] for item in recent_vectors]
     rows = []
-    for token, (query, _, _) in zip(recent_tokens, recent_vectors):
+    for token, (query, _, _) in zip(recent_tokens, recent_vectors, strict=True):
         result = attention(query, keys, values)
-        rows.append({
-            "query_token": token,
-            "query": query,
-            "scaled_scores": rounded_vector(result["scaled_scores"]),
-            "attention_weights": rounded_vector(result["attention_weights"]),
-            "context_vector": rounded_vector(result["context_vector"]),
-        })
+        rows.append(
+            {
+                "query_token": token,
+                "query": query,
+                "scaled_scores": rounded_vector(result["scaled_scores"]),
+                "attention_weights": rounded_vector(result["attention_weights"]),
+                "context_vector": rounded_vector(result["context_vector"]),
+            }
+        )
     return {
         "window_size": window_size,
         "kept_tokens": recent_tokens,
-        "dropped_tokens": tokens[:len(tokens) - len(recent_tokens)],
+        "dropped_tokens": tokens[: len(tokens) - len(recent_tokens)],
         "keys": keys,
         "values": values,
         "rows": rows,

@@ -51,7 +51,7 @@ def test_click_link_navigates_by_visible_text():
     contact = browser.click_link("Contact")
     assert browser.current_url() == browser_use.CONTACT_URL
     assert contact["title"] == "Agent From Zero - Contact"
-    home = browser.click_link("Home")
+    browser.click_link("Home")
     assert browser.current_url() == browser_use.HOME_URL
 
 

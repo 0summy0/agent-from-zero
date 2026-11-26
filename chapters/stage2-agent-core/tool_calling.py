@@ -108,9 +108,7 @@ def parse_plan(plan):
         errors.append(f"missing fields: {', '.join(missing)}")
     if unexpected:
         errors.append(f"unexpected fields: {', '.join(unexpected)}")
-    if "action" in plan and (
-        not isinstance(plan["action"], str) or not plan["action"].strip()
-    ):
+    if "action" in plan and (not isinstance(plan["action"], str) or not plan["action"].strip()):
         errors.append("action must be a non-empty string")
     if "arguments" in plan and not isinstance(plan["arguments"], dict):
         errors.append("arguments must be an object")

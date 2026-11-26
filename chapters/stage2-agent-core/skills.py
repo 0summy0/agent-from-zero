@@ -88,11 +88,7 @@ def write_skill(root, directory_name, name, description, instructions):
     path = Path(root) / "skills" / directory_name / "SKILL.md"
     path.parent.mkdir(parents=True)
     path.write_text(
-        "---\n"
-        f"name: {name}\n"
-        f'description: "{description}"\n'
-        "---\n\n"
-        f"{instructions}\n",
+        f'---\nname: {name}\ndescription: "{description}"\n---\n\n{instructions}\n',
         encoding="utf-8",
     )
 

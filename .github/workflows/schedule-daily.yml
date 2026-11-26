@@ -39,11 +39,16 @@ jobs:
           uv lock --upgrade
           uv sync --frozen
           uv run pytest
-      - name: Open issue on dependency drift
+      - name: Report dependency drift without duplicating issues
         if: steps.drift.outcome == 'failure'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh issue create \
-            --title "Daily dependency drift failed: ${{ github.run_id }}" \
-            --body "The temporary upgraded lockfile failed the smoke tests. See ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} for the logs. The repository lockfile was not changed."
+          title="Daily dependency drift failed"
+          body="The temporary upgraded lockfile failed the smoke tests. See ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} for the logs. The repository lockfile was not changed."
+          existing=$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "$body"
+          else
+            gh issue create --title "$title" --body "$body"
+          fi

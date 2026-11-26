@@ -20,7 +20,7 @@ def build_bigram(corpus):
     transitions = defaultdict(lambda: defaultdict(int))
     for sentence in corpus:
         tokens = tokenize(sentence)
-        for left, right in zip(tokens, tokens[1:]):
+        for left, right in zip(tokens, tokens[1:], strict=False):
             transitions[left][right] += 1
     vocabulary = sorted({token for sentence in corpus for token in tokenize(sentence)})
     return {"transitions": transitions, "vocabulary": vocabulary}
@@ -42,7 +42,7 @@ def apply_temperature(probabilities, temperature):
     peak = max(scaled)
     weights = [math.exp(value - peak) for value in scaled]
     total = sum(weights)
-    return {token: weight / total for token, weight in zip(tokens, weights)}
+    return {token: weight / total for token, weight in zip(tokens, weights, strict=True)}
 
 
 def top_p_filter(probabilities, p):

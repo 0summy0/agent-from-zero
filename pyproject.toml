@@ -1,6 +1,6 @@
 [project]
 name = "agent-from-zero"
-version = "1.0.0"
+version = "1.0.1"
 description = "Bilingual zero-GPU AI Agent course with executable chapters"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -24,6 +24,7 @@ default = true
 dev = [
     "nbval>=0.11.0,<0.12",
     "pytest>=9.2.0,<10",
+    "ruff>=0.9,<1",
 ]
 
 [tool.pytest.ini_options]
@@ -34,3 +35,11 @@ markers = [
     "slow: >60s",
 ]
 addopts = '-q -m "not requires_gpu and not requires_api_key and not slow"'
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]

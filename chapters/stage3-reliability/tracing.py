@@ -3,7 +3,6 @@ import time
 from contextlib import contextmanager
 from pathlib import Path
 
-
 CHAPTER_ID = "3.2-tracing"
 
 
@@ -103,7 +102,7 @@ class ToyAgentRunner:
                     "tool.lookup",
                     parent_span_id=plan["span_id"],
                     attributes={"query": question},
-                ) as tool:
+                ):
                     if fail_tool:
                         raise RuntimeError("toy lookup failed")
                     if "2 + 2" in question:

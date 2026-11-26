@@ -33,7 +33,10 @@ def normalize_code(block):
 
 
 def fingerprints(text):
-    return [hashlib.sha256(normalize_code(block).encode("utf-8")).hexdigest() for block in code_blocks(text)]
+    return [
+        hashlib.sha256(normalize_code(block).encode("utf-8")).hexdigest()
+        for block in code_blocks(text)
+    ]
 
 
 def front_matter(text):
@@ -68,12 +71,16 @@ def validate():
         zh_headings = len(HEADING_PATTERN.findall(FENCE_PATTERN.sub("", zh_text)))
         en_headings = len(HEADING_PATTERN.findall(FENCE_PATTERN.sub("", en_text)))
         if abs(zh_headings - en_headings) > 1:
-            errors.append(f"heading count mismatch: {chapter_id}: zh={zh_headings}, en={en_headings}")
+            errors.append(
+                f"heading count mismatch: {chapter_id}: zh={zh_headings}, en={en_headings}"
+            )
         for language, text in (("zh", zh_text), ("en", en_text)):
             fields = front_matter(text)
             missing = sorted(REQUIRED_FIELDS - fields.keys())
             if missing:
-                errors.append(f"front-matter missing fields: {language}/{chapter_id}: {', '.join(missing)}")
+                errors.append(
+                    f"front-matter missing fields: {language}/{chapter_id}: {', '.join(missing)}"
+                )
         zh_revision = front_matter(zh_text).get("source_revision")
         en_revision = front_matter(en_text).get("source_revision")
         if zh_revision is not None and en_revision is not None and zh_revision != en_revision:
